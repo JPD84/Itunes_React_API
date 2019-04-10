@@ -1,6 +1,5 @@
 import React from 'react';
-import ItunesSelector from '../Components/ItunesSelector';
-import ItunesDetail from '../Components/ItunesDetail';
+import ItunesList from '../Components/ItunesList';
 
 
 class ItunesContainer extends React.Component{
@@ -8,12 +7,9 @@ class ItunesContainer extends React.Component{
         super(props);
         this.state = {
             itunes: null,
-            selectedItunes: null,
-            chartPositon: null,
-            singleCover:null,
-            releaseDate:null
+           
         };
-        this.handleItunesSelected = this.handleItunesSelected.bind(this)
+        
     }
 
     componentDidMount(){
@@ -23,13 +19,6 @@ class ItunesContainer extends React.Component{
         .then(data => this.setState({itunes: data.feed.entry}))
     }
 
-    handleItunesSelected(index){
-        const itunesSelector = this.state.itunes[index];
-        this.setState({selectedItunes: itunesSelector})
-        this.setState({chartPosition:index})
-        this.setState({singleCover:index})
-
-    }
 
     render(){
         if(!this.state.itunes) return null
@@ -38,9 +27,8 @@ class ItunesContainer extends React.Component{
                 <h2>
                 Itunes Container
                 </h2>
-                <ItunesSelector itunes={this.state.itunes}
-                handleSelected={this.handleItunesSelected} />
-                <ItunesDetail itune={this.state.selectedItunes} position= {this.state.chartPosition} />
+                <ItunesList itunes={this.state.itunes}/>
+            
             </div>
         )
     } 
