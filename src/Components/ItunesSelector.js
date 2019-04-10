@@ -1,13 +1,15 @@
 import React from 'react';
 
 const ItunesSelector = (props) =>{
+    console.log(props.itunes)
 
     const options = props.itunes.map((itune, index) =>{
-        return <option value={index} key={index}>{itune.name}</option>
+        console.log(itune)
+        return <option value={index} key={index}>{itune['im:name'].label}</option>
 
     })
 
-    function handleChange(event){
+    const handleChange = (event) =>{
         props.handleSelected(event.target.value);
     }
 

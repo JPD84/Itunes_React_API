@@ -7,8 +7,9 @@ class ItunesContainer extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            itunes: [],
-            selectedItunes: null
+            itunes: null,
+            selectedItunes: null,
+            chartPositon: null
         };
         this.handleItunesSelected = this.handleItunesSelected.bind(this)
     }
@@ -17,20 +18,18 @@ class ItunesContainer extends React.Component{
         const url = 'https://itunes.apple.com/gb/rss/topsongs/limit=20/json';
         fetch(url)
         .then(res => res.json())
-        .then(data => this.setState({itunes: data.results.feed.entry}))
+        .then(data => this.setState({itunes: data.feed.entry}))
     }
 
     handleItunesSelected(index){
         const itunesSelector = this.state.itunes[index];
         this.setState({selectedItunes: itunesSelector})
-        const url = 'https://itunes.apple.com/gb/rss/topsongs/'+index+'/'
-        fetch(url)
-        .then(res => res.json())
-        .then(data => this.setState({selectedItunes :data}))
+        this.setState({chartPosition:(index)})
 
     }
 
     render(){
+        if(!this.state.itunes) return null
         return(
             <div>
                 <h2>
@@ -38,7 +37,7 @@ class ItunesContainer extends React.Component{
                 </h2>
                 <ItunesSelector itunes={this.state.itunes}
                 handleSelected={this.handleItunesSelected} />
-                <ItunesDetail itune={this.state.selectedItunes} />
+                <ItunesDetail itune={this.state.selectedItunes} position= {this.state.chartPosition} />
             </div>
         )
     } 
