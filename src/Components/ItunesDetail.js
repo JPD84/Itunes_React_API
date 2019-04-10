@@ -6,7 +6,7 @@ const ItunesDetail = (props) => {
     return(
         <div>
         <h3>
-            Chart Position:{props.position}
+            Chart Position: {props.position + 1}
         </h3>
             <h3>
                 Title: {props.itune['im:name'].label}

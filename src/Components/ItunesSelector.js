@@ -10,7 +10,7 @@ const ItunesSelector = (props) =>{
     })
 
     const handleChange = (event) =>{
-        props.handleSelected(event.target.value);
+        props.handleSelected(parseInt(event.target.value));
     }
 
     return(

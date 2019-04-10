@@ -6,6 +6,7 @@ import ItunesDetail from '../Components/ItunesDetail';
 class ItunesContainer extends React.Component{
     constructor(props){
         super(props);
+        parseInt("chartPosition")
         this.state = {
             itunes: null,
             selectedItunes: null,
@@ -24,7 +25,7 @@ class ItunesContainer extends React.Component{
     handleItunesSelected(index){
         const itunesSelector = this.state.itunes[index];
         this.setState({selectedItunes: itunesSelector})
-        this.setState({chartPosition:(index)})
+        this.setState({chartPosition:index})
 
     }
 
