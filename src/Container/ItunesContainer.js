@@ -17,7 +17,7 @@ class ItunesContainer extends React.Component{
         const url = 'https://itunes.apple.com/gb/rss/topsongs/limit=20/json';
         fetch(url)
         .then(res => res.json())
-        .then(data => this.setState({itunes: data.results}))
+        .then(data => this.setState({itunes: data.results.feed.entry}))
     }
 
     handleItunesSelected(index){
