@@ -5,7 +5,7 @@ const ItunesSelector = (props) =>{
 
     const options = props.itunes.map((itune, index) =>{
         console.log(itune)
-        return <option value={index} key={index}>{itune['im:name'].label}</option>
+        return <option value={index} key={index}>{itune['im:name'].label} {itune['im:image'].label}</option>
 
     })
 
